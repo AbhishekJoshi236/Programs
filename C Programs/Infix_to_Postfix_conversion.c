@@ -1,4 +1,4 @@
-/*ABHISHEK JOSHI        20011988        SEC:B */
+
 #include<stdio.h>
 char stack[100];
 int top=-1;
