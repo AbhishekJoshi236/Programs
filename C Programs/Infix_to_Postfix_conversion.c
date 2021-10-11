@@ -1,4 +1,3 @@
-
 #include<stdio.h>
 char stack[100];
 int top=-1;
@@ -42,7 +41,7 @@ int main()
         
         else
         {
-            while(preference(stack[top])>preference(s[i]))
+            while( preference(s[i]) <= preference(stack[top]) )
             {
                 printf("%c ",stack[top]);
                 --top;
@@ -61,4 +60,3 @@ int main()
     }
     return 0;
 }
-
