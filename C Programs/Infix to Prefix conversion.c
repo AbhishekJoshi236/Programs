@@ -30,7 +30,7 @@ int main()
         s[j]=b;
     }
     
-    printf("Showing its POSTFIX expression: ");
+    printf("Showing its PREFIX expression: ");
     while(s[i]!='\0')
     {
         if(isalpha(s[i]) )
