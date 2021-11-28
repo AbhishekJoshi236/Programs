@@ -1,4 +1,6 @@
 //CODE 3  Searching and deleting a KEY from the Circular Linked List.
+// Assumption: All elements in the LL are unique.
+
 #include <stdio.h>
 #include <stdlib.h>
 
