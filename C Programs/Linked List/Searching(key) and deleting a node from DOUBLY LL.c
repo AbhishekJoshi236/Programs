@@ -1,3 +1,6 @@
+// In this code we are searching for a key entered by an user and if found then deleting the respective node.
+//  Assumption: All elements in the LL are unique.
+
 #include <stdio.h>
 #include <stdlib.h>
 
