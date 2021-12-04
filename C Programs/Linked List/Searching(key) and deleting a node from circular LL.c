@@ -1,5 +1,4 @@
 //CODE 3  Searching and deleting a KEY from the Circular Linked List.
-// Assumption: All elements in the LL are unique.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,9 +9,7 @@ typedef struct node_type
     struct node_type *next;
 }node;
 
-
 node *tail;
-
 
 void createdll (int value)
 {
@@ -53,29 +50,27 @@ void searchkey(int key)
 {
     node *temp=tail->next;
     node *prev=tail->next;
+    int flag=0;
     while( (temp->next)!=(tail->next) )
     {
       
         if((temp->data)==key)
         {
+            if(flag==0)
+            {
+                printf("\nKEY FOUND\n");
+                flag=1;
+            }
+
             if(temp==(tail->next))
             {
-                printf("\nKEY FOUND\n");
                 tail->next=temp->next;
-
                 free(temp);
-                display();
-                exit(0);
-            }
-                    
-            if(temp!=tail)
+            }    
+            else 
             {
-                printf("\nKEY FOUND\n");
                 prev->next=temp->next;
-
-                free(temp);
-                display();
-                exit(0);
+                free(temp);   
             }
         }
         prev=temp;
@@ -83,19 +78,28 @@ void searchkey(int key)
         
     }
     
-    if(  ((temp->data)==key) && (temp==tail) )
+    if(  (temp->data)==key )
     {
-        printf("\nKEY FOUND\n");
+        if(flag==0)
+            {
+                printf("\nKEY FOUND\n");
+            }
+        
         prev->next=tail->next;
         tail=prev;
         free(temp);
+        //display();
+        //exit(0);
+    }
+    
+    if(flag==1)
+    {
         display();
         exit(0);
     }
-    else
-    {
-        printf("\nKEY NOT FOUND\n\n");
-    }
+
+    printf("\nKEY NOT FOUND\n\n");
+    
     
 }
 int main()
@@ -106,15 +110,15 @@ int main()
     createdll(30);
     createdll(40);
     createdll(50);
-    
+    createdll(20);
+    createdll(40);
+
     display();                                  //Displaying Linked List Before Upation.
     
     
     printf("\n\nEnter a Key:  ");
     scanf("%d",&key);
     searchkey(key);
-
-   
 
 
     return 0;
