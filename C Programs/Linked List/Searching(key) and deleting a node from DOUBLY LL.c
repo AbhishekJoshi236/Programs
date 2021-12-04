@@ -1,5 +1,4 @@
 // In this code we are searching for a key entered by an user and if found then deleting the respective node.
-//  Assumption: All elements in the LL are unique.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -51,47 +50,50 @@ void display ()
 void searchkey (int key)
 {
     node *temp=start;
-
+    int flag=0;
     while(temp!=NULL)
     {
         if( (temp->data) == key)
         {
+            if(flag==0)
+            {
+                printf("\nKEY FOUND.\n");
+                flag=1;
+            }
+
             //Condition for the First Element.
             if( ( (temp->data) == key) && (temp==start) )
             {
-                printf("\nKEY FOUND.\n");
+                
                 start=temp->next;
                 start->prev=NULL;
                 free(temp);
-                
-                display();                          //Displaying Linked List After Updation.
-                exit(0);
-                
             }
             
             //Condition for the Last Element.
             else if( ( (temp->data) == key) && (temp->next==NULL) )
             {
-                printf("\nKEY FOUND.\n");
+                
                 temp->prev->next=temp->next;
                 free(temp);
-                
-                display();                           //Displaying Linked List After Updation.
-                exit(0);
             }
             
             else
             {
-                printf("\nKEY FOUND.\n");
+                
                 temp->prev->next=temp->next;
                 temp->next->prev=temp->prev;
                 free(temp);
-            
-                display();                          //Displaying Linked List After Updation.
-                exit(0);
             }
         }
+
         temp=temp->next;
+    }
+
+    if(flag==1)
+    {
+        display();
+        exit(0);
     }
     printf("\nKEY NOT FOUND.\n");
 }
@@ -103,10 +105,12 @@ int main()
     //Creating Linked List
     createdll(10);
     createdll(20);
-    createdll(30);
+    createdll(10);
     createdll(40);
     createdll(50);
-    display();              //Displaying Linked List Before Updation.
+    createdll(30);
+    createdll(40);
+    display();                      //Displaying Linked List Before Updation.
 
     printf("Enter a Key: ");
     scanf("%d",&key);
